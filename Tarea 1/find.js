@@ -1,3 +1,12 @@
+function miFind(array, condicion) {
+    for (let i = 0; i < array.length; i++) {
+        if (condicion(array[i])) {
+            return array[i];
+        }
+    }
+    return undefined;
+}
+
 const producto = [
     {nombre: "Leche", stock: "40"},
     {nombre: "Lata Atun", stock: "20"},
@@ -14,4 +23,4 @@ function esHuevo(prod){
     return prod.nombre === "Huevo"; 
 }
 
-console.log(producto.find(esHuevo));
+console.log(miFind(producto, esHuevo));

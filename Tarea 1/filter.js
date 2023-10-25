@@ -1,3 +1,15 @@
+function miFilter(array, condicion) {
+    const resultado = [];
+
+    for (let i = 0; i < array.length; i++) {
+        if (condicion(array[i])) {
+            resultado.push(array[i]);
+        }
+    }
+
+    return resultado;
+}
+
 const producto = [
     {nombre: "Leche", stock: "40"},
     {nombre: "Lata Atun", stock: "20"},
@@ -8,8 +20,10 @@ const producto = [
     {nombre: "Huevo", stock: "0"},
 ];
 
-function esHuevo(prod){
+function HayStock(prod){
     return prod.stock > 0; 
 }
 
-console.log(producto.filter(esHuevo));
+const resultado = miFilter(producto, HayStock);
+
+console.log(resultado);
