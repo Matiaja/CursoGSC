@@ -1,0 +1,5 @@
+.grilla {
+    display: grid;
+    grid-template-columns: repeat(3, 50px);
+    grid-gap: 0px;
+  }

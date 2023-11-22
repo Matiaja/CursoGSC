@@ -1,0 +1,7 @@
+<div class="grilla">
+    <app-celda
+      *ngFor="let estado of estados; let i = index"
+      [estado]="estado"
+      (celdaClickeada)="celdaClickeada(i)"
+    ></app-celda>
+</div>
