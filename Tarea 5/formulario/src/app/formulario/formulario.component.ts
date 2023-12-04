@@ -21,13 +21,21 @@ export class FormularioComponent {
     'confirmaremail' : ['',Validators.required],
     'clave' : ['',Validators.required],
     'telefono' : ['',Validators.required],
-    'deseanotificacion' : [true,Validators.required],
-    'terminosycondiciones' : ['',Validators.required],});
+    'deseanotificacion' : [false ,Validators.required],
+    'terminosycondiciones' : [false ,Validators.required],});
 
   constructor(
     private fb: FormBuilder, 
     private servicioSuscripcion: ServicioSuscripcionService
   ) {}
+
+
+  validaIgualdadEmail(): boolean {
+    const email = this.formUser.get('email')?.value;
+    const confirmarEmail = this.formUser.get('confirmaremail')?.value;
+    
+    return email === confirmarEmail;
+  }
 
   onSubmit() {
     if (this.formUser.valid) {

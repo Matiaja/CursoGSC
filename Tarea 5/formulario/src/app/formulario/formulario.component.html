@@ -46,26 +46,24 @@
   </div>
 
   <div class="campo">
-    <label for="deseaNotificacion">¿Desea notificación?</label>
-    <select formControlName="deseanotificacion" id="deseaNotificacion">
-      <option value="si">Sí</option>
-      <option value="no">No</option>
-    </select>
+    <label for="deseaNotificacion">
+      ¿Desea notificación?
+      <input type="checkbox" formControlName="deseanotificacion" id="deseaNotificacion">
+    </label>
   </div>
 
   <div class="campo">
-    <label for="terminosCondiciones">¿Acepta los términos y condiciones?</label>
-    <select formControlName="terminosycondiciones" id="terminosCondiciones">
-      <option value="si">Sí</option>
-      <option value="no">No</option>
-    </select>
-    <div *ngIf="formUser.get('terminosycondiciones')?.value === 'no' && formUser.get('terminosycondiciones')?.dirty" class="error">
+    <label for="terminosCondiciones">
+      ¿Acepta los términos y condiciones?
+      <input type="checkbox" formControlName="terminosycondiciones" id="terminosCondiciones">
+    </label>
+    <div *ngIf="formUser.get('terminosycondiciones')?.value === false && formUser.get('terminosycondiciones')?.dirty" class="error">
       Debe aceptar los términos y condiciones.
     </div>
   </div>
 
   <div class="campo">
-    <button type="submit">
+    <button type="submit" [disabled]="!formUser.valid || !formUser.get('terminosycondiciones')?.value || !validaIgualdadEmail()">
       Enviar
     </button>
   </div>
