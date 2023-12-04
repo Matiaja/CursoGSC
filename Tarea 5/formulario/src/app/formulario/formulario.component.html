@@ -1,0 +1,74 @@
+<form [formGroup]="formUser" (ngSubmit)="onSubmit()" class="formulario">
+
+  <div class="campo">
+    <label>
+      Nombre:
+      <input type="text" formControlName="nombre">
+    </label>
+  </div>
+
+  <div class="campo">
+    <label>
+      Apellido:
+      <input type="text" formControlName="apellido">
+    </label>
+  </div>
+
+  <div class="campo">
+    <label>
+      Email:
+      <input type="email" formControlName="email">
+    </label>
+  </div>
+
+  <div class="campo">
+    <label>
+      Confirmar Mail:
+      <input type="email" formControlName="confirmaremail">
+      <div *ngIf="formUser.get('confirmaremail')?.value !== formUser.get('email')?.value && formUser.get('confirmaremail')?.touched" class="error">
+        Los correos no coinciden.
+      </div>
+    </label>
+  </div>
+
+  <div class="campo">
+    <label>
+      Clave:
+      <input type="password" formControlName="clave">
+    </label>
+  </div>
+
+  <div class="campo">
+    <label>
+      Telefono:
+      <input type="tel" formControlName="telefono">
+    </label>
+  </div>
+
+  <div class="campo">
+    <label for="deseaNotificacion">¿Desea notificación?</label>
+    <select formControlName="deseanotificacion" id="deseaNotificacion">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select>
+  </div>
+
+  <div class="campo">
+    <label for="terminosCondiciones">¿Acepta los términos y condiciones?</label>
+    <select formControlName="terminosycondiciones" id="terminosCondiciones">
+      <option value="si">Sí</option>
+      <option value="no">No</option>
+    </select>
+    <div *ngIf="formUser.get('terminosycondiciones')?.value === 'no' && formUser.get('terminosycondiciones')?.dirty" class="error">
+      Debe aceptar los términos y condiciones.
+    </div>
+  </div>
+
+  <div class="campo">
+    <button type="submit">
+      Enviar
+    </button>
+  </div>
+
+</form>
+
